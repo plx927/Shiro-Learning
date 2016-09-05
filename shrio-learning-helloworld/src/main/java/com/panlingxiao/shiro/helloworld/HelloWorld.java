@@ -22,18 +22,19 @@ public class HelloWorld {
 
         //--------------构造Shiro的运行环境--------------------------
 
-        //从classpath中读取Ini配置文件，通过工厂创建Shrio的SecurityManger
-        Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro.ini");
+        /*
+         * 从classpath中读取Ini配置文件，通过工厂创建Shrio的SecurityManger，
+         * 默认情况下就会从classpath下的shiro的ini文件中读取
+         */
+        Factory<SecurityManager> factory = new IniSecurityManagerFactory();
         SecurityManager securityManager = factory.getInstance();
         //设置SecurityManager
         SecurityUtils.setSecurityManager(securityManager);
 
 
-        // get the currently executing user:
-        // A Subject is just a security-specific "view" of an application User
-        // getSubject()根据当前线程或者请求获取到用户数据信息
+        // get the currently executing user:A Subject is just a security-specific "view" of an application User
+        // getSubject()根据当前线程或者请求获取到用户数据信息，在所有的环境下都可以通过该方法获取当前的用户
         Subject currentUser = SecurityUtils.getSubject();
-
 
 
         // Do some stuff with a Session (no need for a web or EJB container!!!)
@@ -94,6 +95,8 @@ public class HelloWorld {
             }
             //all done - log out!
             currentUser.logout();
+
+
 
             System.exit(0);
         }

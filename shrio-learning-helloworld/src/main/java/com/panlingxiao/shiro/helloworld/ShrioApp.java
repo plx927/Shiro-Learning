@@ -41,6 +41,7 @@ public class ShrioApp {
         //判断用户是否认证
         if (!currentUser.isAuthenticated()) {
             UsernamePasswordToken token = new UsernamePasswordToken("吴大神", "吴大神");
+            token.setRememberMe(true);
             //用户登入
             try {
                 currentUser.login(token);
@@ -68,7 +69,9 @@ public class ShrioApp {
         currentUser.logout();
 
 
-       // log.info("大神的Session,hello:{}",session.getAttribute("hello"));
+
+
+       //log.info("大神的Session,hello:{}",session.getAttribute("hello"));
 
     }
 }
