@@ -28,7 +28,7 @@ public class AuthenticationApp {
         Subject subject = SecurityUtils.getSubject();
 
 
-        if(!subject.isAuthenticated()){
+        if (!subject.isAuthenticated()) {
             UsernamePasswordToken token = new UsernamePasswordToken();
             token.setUsername("zs");
             token.setPassword("123".toCharArray());

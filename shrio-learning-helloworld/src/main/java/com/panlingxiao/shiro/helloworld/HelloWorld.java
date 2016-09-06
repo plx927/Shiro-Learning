@@ -39,7 +39,7 @@ public class HelloWorld {
 
         // Do some stuff with a Session (no need for a web or EJB container!!!)
         /*
-         * 这里的Session是由Shiro所提供的,它和我们的HttpSession类似，但是并需要Http环境
+         * 这里的Session是由Shiro所提供的,它和我们的HttpSession类似，但是不需要Http环境
          */
         Session session = currentUser.getSession();
         session.setAttribute("someKey", "aValue");

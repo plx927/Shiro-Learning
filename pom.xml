@@ -11,6 +11,8 @@
     <modules>
         <module>shrio-learning-helloworld</module>
         <module>shiro-learning-webapp</module>
+        <module>shiro-learning-authenticator</module>
+        <module>shiro-learning-authorizer</module>
     </modules>
 
     <properties>
@@ -22,6 +24,13 @@
 
     <dependencyManagement>
         <dependencies>
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.12</version>
+                <scope>test</scope>
+            </dependency>
 
             <dependency>
                 <groupId>org.apache.shiro</groupId>
