@@ -16,17 +16,19 @@ import java.util.Arrays;
 
 /**
  * Created by panlingxiao on 2016/9/2.
+ * 分析Shiro的认证过程
  */
-public class ShrioApp {
+public class ShiroApp {
 
 
-    private static final Logger log = LoggerFactory.getLogger(ShrioApp.class);
+    private static final Logger log = LoggerFactory.getLogger(ShiroApp.class);
 
     public static void main(String[] args) {
         /*
          * 构建 Shiro 环境
+         * 默认情况下就会从classpath下的shiro的ini文件中读取
          */
-        Factory<org.apache.shiro.mgt.SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro.ini");
+        Factory<org.apache.shiro.mgt.SecurityManager> factory = new IniSecurityManagerFactory();
         org.apache.shiro.mgt.SecurityManager securityManager = factory.getInstance();
         //设置SecurityManager
         SecurityUtils.setSecurityManager(securityManager);
@@ -67,9 +69,6 @@ public class ShrioApp {
 
         log.info("大神的Session,hello:{}",session.getAttribute("hello"));
         currentUser.logout();
-
-
-
 
        //log.info("大神的Session,hello:{}",session.getAttribute("hello"));
 

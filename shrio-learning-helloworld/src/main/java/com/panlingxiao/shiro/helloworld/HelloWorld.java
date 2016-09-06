@@ -26,7 +26,7 @@ public class HelloWorld {
          * 从classpath中读取Ini配置文件，通过工厂创建Shrio的SecurityManger，
          * 默认情况下就会从classpath下的shiro的ini文件中读取
          */
-        Factory<SecurityManager> factory = new IniSecurityManagerFactory();
+        Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro.ini");
         SecurityManager securityManager = factory.getInstance();
         //设置SecurityManager
         SecurityUtils.setSecurityManager(securityManager);
