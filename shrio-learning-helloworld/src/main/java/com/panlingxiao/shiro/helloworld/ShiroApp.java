@@ -20,7 +20,6 @@ import java.util.Arrays;
  */
 public class ShiroApp {
 
-
     private static final Logger log = LoggerFactory.getLogger(ShiroApp.class);
 
     public static void main(String[] args) {
