@@ -7,6 +7,7 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.config.IniSecurityManagerFactory;
 import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.Factory;
 import org.slf4j.Logger;
@@ -46,6 +47,10 @@ public class ShiroApp {
             //用户登入
             try {
                 currentUser.login(token);
+
+                PrincipalCollection principals = currentUser.getPrincipals();
+                log.info("user's principals is {}",principals.asList());
+
             } catch (UnknownAccountException e) {
                 log.info("用户名不存在");
             } catch (IncorrectCredentialsException e) {

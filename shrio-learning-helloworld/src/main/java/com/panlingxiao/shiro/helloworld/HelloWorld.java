@@ -57,7 +57,7 @@ public class HelloWorld {
             token.setRememberMe(true);
             try {
                 currentUser.login(token);
-                //输出用户信息
+                //输出用户信息,Subject的principal是用户的标示属性
                 log.info("User [" + currentUser.getPrincipal() + "] logged in successfully.");
             } catch (UnknownAccountException uae) {
                 log.info("There is no user with username of " + token.getPrincipal());

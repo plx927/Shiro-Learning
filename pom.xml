@@ -13,6 +13,7 @@
         <module>shiro-learning-webapp</module>
         <module>shiro-learning-authenticator</module>
         <module>shiro-learning-authorizer</module>
+        <module>shiro-learning-realm</module>
     </modules>
 
     <properties>
