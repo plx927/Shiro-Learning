@@ -7,8 +7,8 @@ import java.util.List;
 
 
 /**
- * 自己实现Realm，通常情况下，用户不会自己去直接实现Realm接口，
- * 而是去继承现成的Realm实现类。
+ * 自己实现Realm，通常情况下，用户不会自己去直接实现Realm接口。
+ * 而是去继承现成的Realm实现类，对于一个用户认证的Realm，可以去继承AuthenticatingRealm
  */
 public class MyRealm1 implements Realm {
 
@@ -22,6 +22,13 @@ public class MyRealm1 implements Realm {
         return token instanceof UsernamePasswordToken; //仅支持UsernamePasswordToken类型的Token
     }
 
+
+    /**
+     * 根据一个指定的token,返回一个帐号指定的认证信息
+     * @param token
+     * @return
+     * @throws AuthenticationException
+     */
     @Override
     public AuthenticationInfo getAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 

@@ -13,6 +13,7 @@ import org.junit.Test;
 
 
 /**
+ * Shiro认证基本测试
  */
 public class LoginLogoutTest {
 
@@ -46,6 +47,9 @@ public class LoginLogoutTest {
 
     /**
      * 测试自定义的Realm,此是用户自定义的Realm会覆盖Shiro默认的IniRealm
+     * Shiro的SecurityManager所维护的Authenticator是ModularRealmAuthenticator
+     * 它可以将Realm以插件的形式进行管理，默认情况下其使用的Realm为IniRealm.
+     * 现在我们使用自己所定义的Realm来完成认证操作
      */
     @Test
     public void testCustomRealm() {
@@ -76,7 +80,9 @@ public class LoginLogoutTest {
     }
 
 
-
+    /**
+     * 测试使用多个Realm来进行认证
+     */
     @Test
     public void testCustomMultiRealm() {
         //1、获取SecurityManager工厂，此处使用Ini配置文件初始化SecurityManager
@@ -94,6 +100,7 @@ public class LoginLogoutTest {
         try {
             //4、登录，即身份验证
             subject.login(token);
+            System.out.println("principal's "+subject.getPrincipals());
         } catch (AuthenticationException e) {
             //5、身份验证失败
             e.printStackTrace();
@@ -106,6 +113,9 @@ public class LoginLogoutTest {
     }
 
 
+    /**
+     * JDBCRealm测试，源码分析JdbcRealm的实现
+     */
     @Test
     public void testJDBCRealm() {
         //1、获取SecurityManager工厂，此处使用Ini配置文件初始化SecurityManager

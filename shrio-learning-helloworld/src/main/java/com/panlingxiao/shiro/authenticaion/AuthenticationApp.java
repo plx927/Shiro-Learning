@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Created by panlingxiao on 2016/9/6.
+ * 测试自定义的Realm
  */
 public class AuthenticationApp {
 
@@ -41,6 +42,7 @@ public class AuthenticationApp {
                  */
                 subject.login(token);
                 log.info("认证成功");
+                log.info("user's principal is :{},RealmNames is:{}",subject.getPrincipals(),subject.getPrincipals().getRealmNames());
             } catch (AuthenticationException e) {
                 log.info("认证失败!");
             }

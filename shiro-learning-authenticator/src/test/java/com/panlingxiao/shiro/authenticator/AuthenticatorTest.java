@@ -18,27 +18,59 @@ import org.junit.After;
 import org.junit.Test;
 
 
+/**
+ * 测试认证策略
+ */
 public class AuthenticatorTest {
 
+    /**
+     * 通用的工具类
+     * @param configFile
+     */
+    private void login(String configFile) {
+        //1、获取SecurityManager工厂，此处使用Ini配置文件初始化SecurityManager
+        Factory<org.apache.shiro.mgt.SecurityManager> factory =
+                new IniSecurityManagerFactory(configFile);
+
+        //2、得到SecurityManager实例 并绑定给SecurityUtils
+        org.apache.shiro.mgt.SecurityManager securityManager = factory.getInstance();
+        SecurityUtils.setSecurityManager(securityManager);
+
+        //3、得到Subject及创建用户名/密码身份验证Token（即用户身份/凭证）
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken token = new UsernamePasswordToken("zhang", "123");
+
+        subject.login(token);
+    }
+
+
+    /**
+     * 当所有的Realm验证成功时才算认证通过
+     */
     @Test
     public void testAllSuccessfulStrategyWithSuccess() {
         login("classpath:shiro-authenticator-all-success.ini");
         Subject subject = SecurityUtils.getSubject();
 
-        //得到一个身份集合，其包含了Realm验证成功的身份信息
+        //得到一个身份集合，其包含了Realm验证成功的身份信息,这里会包含zhang和zhang@163.com两个身份信息
         PrincipalCollection principalCollection = subject.getPrincipals();
         Assert.assertEquals(2, principalCollection.asList().size());
     }
 
-
-
-
-
+    /**
+     * 由于使用的策略是AllSuccessfulStrategy
+     * 使用了realm1和realm2来进行身份认证，只有第一个可以通过，
+     * 因此第二个会抛出异常，从而导致认证失败
+     */
     @Test(expected = UnknownAccountException.class)
     public void testAllSuccessfulStrategyWithFail() {
         login("classpath:shiro-authenticator-all-fail.ini");
     }
 
+
+    /**
+     * 默认的认证策略，当有一个Realm认证通过，则认证通过
+     */
     @Test
     public void testAtLeastOneSuccessfulStrategyWithSuccess() {
         login("classpath:shiro-authenticator-atLeastOne-success.ini");
@@ -49,6 +81,9 @@ public class AuthenticatorTest {
         Assert.assertEquals(2, principalCollection.asList().size());
     }
 
+    /**
+     * 当有一个Realm认证通过则通过，但是返回的认证信息中只包含第一个认证成功的Realm所返回的认证信息
+     */
     @Test
     public void testFirstOneSuccessfulStrategyWithSuccess() {
         login("classpath:shiro-authenticator-first-success.ini");
@@ -79,21 +114,7 @@ public class AuthenticatorTest {
         Assert.assertEquals(1, principalCollection.asList().size());
     }
 
-    private void login(String configFile) {
-        //1、获取SecurityManager工厂，此处使用Ini配置文件初始化SecurityManager
-        Factory<org.apache.shiro.mgt.SecurityManager> factory =
-                new IniSecurityManagerFactory(configFile);
 
-        //2、得到SecurityManager实例 并绑定给SecurityUtils
-        org.apache.shiro.mgt.SecurityManager securityManager = factory.getInstance();
-        SecurityUtils.setSecurityManager(securityManager);
-
-        //3、得到Subject及创建用户名/密码身份验证Token（即用户身份/凭证）
-        Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken("zhang", "123");
-
-        subject.login(token);
-    }
 
     @After
     public void tearDown() throws Exception {
