@@ -29,6 +29,13 @@ public class AuthenticationByMultiRealms {
         if (!subject.isAuthenticated()) {
             UsernamePasswordToken token = new UsernamePasswordToken("zs", "123");
             try {
+                /*
+                 * 1.Subject执行，委托SecurityManager来执行。
+                 * 2.SecurityManager调用它底层维护的(Authenticator)认证器来认证：这句话需要通过查看AuthenticatingSecurityManager的authenticate方法来查看。
+                 * 3.底层的认证器(Authenticator)执行认证，正常情况下使用的认证器是ModularRealmsAuthenticator，它将Realm进行管理。
+                 * 4.Authenticator有一个实现类，AbstractAuthenticator,实现了接口里面的方法，提供了抽象给子类实现。(模板设计模式)
+                 *   具体的实现类为ModularRealmsAuthenticator实现了父类提供的抽象方法。
+                 */
                 subject.login(token);
                 log.info("认证成功");
                 log.info("Principal is :{}，Realms is {},Primary Principal is:{}",
