@@ -2,11 +2,15 @@ package com.panlingxiao.shiro.authorization;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.permission.WildcardPermission;
+import org.apache.shiro.authz.permission.WildcardPermissionResolver;
 import org.apache.shiro.config.IniSecurityManagerFactory;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.Factory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Arrays;
 
 /**
  * Created by panlingxiao on 2016/9/13.
@@ -43,7 +47,29 @@ public class AuthorizationApp {
             log.info("授权失败，subject has not visitor role");
         }
 
+        //判断权限
+        if(subject.isPermitted("user:add")){
+            log.info("授权成功,subject has permit user:add");
+        }
 
+        if(subject.isPermitted(new WildcardPermission("user:get"))){
+            log.info("授权成功,subject has permit user:get");
+        }
+
+        //domain:action --> user:update,user:delete
+        if(subject.isPermitted("user:update,delete")){
+            log.info("授权成功,subject has permit user:update,delete");
+        }
+
+        WildcardPermissionResolver resolver = new WildcardPermissionResolver();
+
+        if(subject.isPermittedAll(Arrays.asList(resolver.resolvePermission("user:update"),resolver.resolvePermission("user:delete")))){
+            log.info("批量测试授权");
+        }
+
+        if(!subject.isPermitted(new WildcardPermission("admin:get"))){
+            log.info("授权失败,subject has not permit admin:get");
+        }
 
         subject.logout();
     }
