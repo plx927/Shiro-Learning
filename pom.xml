@@ -14,6 +14,7 @@
         <module>shiro-learning-authenticator</module>
         <module>shiro-learning-authorizer</module>
         <module>shiro-learning-realm</module>
+        <module>shiro-learning-configuration</module>
     </modules>
 
     <properties>

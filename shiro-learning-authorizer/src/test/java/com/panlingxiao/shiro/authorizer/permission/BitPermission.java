@@ -6,8 +6,7 @@ import org.apache.shiro.authz.Permission;
 /**
  *  规则
  *    +资源字符串+权限位+实例ID
- *
- *  以+开头 中间通过+分割
+ *    以+开头 中间通过+分割
  *
  *  权限：
  *     0 表示所有权限
@@ -20,9 +19,6 @@ import org.apache.shiro.authz.Permission;
  *
  *  不考虑一些异常情况
  *
- * <p>User: Zhang Kaitao
- * <p>Date: 14-1-26
- * <p>Version: 1.0
  */
 public class BitPermission implements Permission {
 
