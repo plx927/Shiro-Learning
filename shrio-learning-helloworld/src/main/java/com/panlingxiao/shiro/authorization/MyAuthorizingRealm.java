@@ -17,6 +17,10 @@ import java.util.Map;
 /**
  * Created by panlingxiao on 2016/9/13.
  * 自定义一个授权的Realm,授权的Realm同时实现了认证功能
+ *
+ * 一旦继承AuthorizingRealm，那么该Realm就实现了Authorizer接口
+ * 又因为AuthorizingRealm继承了AuthenticatingRealm，那么它也具备了认证功能。
+ *
  */
 public class MyAuthorizingRealm extends AuthorizingRealm {
 
@@ -101,6 +105,7 @@ public class MyAuthorizingRealm extends AuthorizingRealm {
         String principal = (String) principals.getPrimaryPrincipal();
         UserInfo userInfo = USER_INFO_MAP.get(principal);
         if(userInfo != null){
+            //通过UserInfo，将角色信息和授权信息添加到授权信息对象中去，然后让Shiro来判断这个授权信息中是否包含指定了角色和权限
             SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
             authorizationInfo.addRoles(userInfo.getRoles());
             authorizationInfo.addStringPermissions(userInfo.getPermissions());

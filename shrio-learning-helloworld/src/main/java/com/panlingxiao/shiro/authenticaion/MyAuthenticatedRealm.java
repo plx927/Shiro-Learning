@@ -8,7 +8,9 @@ import java.util.Map;
 
 /**
  * Created by panlingxiao on 2016/9/6.
- * 实现一个认证的Realm
+ * 实现一个认证的Realm，这里的realm的name是我们在INI配置的Name，其原因是
+ * AuthenticatingRealm的继承了CachingRealm,而CachingRealm实现了Nameable接口，
+ * 因此它会将Realm的名字注入进来。
  */
 public class MyAuthenticatedRealm extends AuthenticatingRealm {
 
@@ -17,6 +19,11 @@ public class MyAuthenticatedRealm extends AuthenticatingRealm {
 
     static {
         USER_INFO.put("zs", "123");
+    }
+
+    @Override
+    public void setName(String name) {
+        super.setName(name);
     }
 
     @Override
