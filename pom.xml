@@ -15,6 +15,7 @@
         <module>shiro-learning-authorizer</module>
         <module>shiro-learning-realm</module>
         <module>shiro-learning-configuration</module>
+        <module>shiro-learning-integrated-web</module>
     </modules>
 
     <properties>
@@ -76,6 +77,12 @@
                 <scope>provided</scope>
             </dependency>
 
+            <dependency>
+                <groupId>javax.servlet.jsp</groupId>
+                <artifactId>jsp-api</artifactId>
+                <version>2.2</version>
+                <scope>provided</scope>
+            </dependency>
 
             <dependency>
                 <groupId>commons-logging</groupId>
