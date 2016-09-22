@@ -17,6 +17,9 @@
         <module>shiro-learning-configuration</module>
         <module>shiro-learning-integrated-web</module>
         <module>shiro-learning-integrated-spring</module>
+        <module>shiro-learning-example</module>
+        <module>shiro-learning-cache</module>
+        <module>shiro-learning-session-manage</module>
     </modules>
 
     <properties>
@@ -37,6 +40,8 @@
                 <scope>test</scope>
             </dependency>
 
+
+            <!-- Shiro 配置-->
             <dependency>
                 <groupId>org.apache.shiro</groupId>
                 <artifactId>shiro-core</artifactId>
@@ -63,6 +68,19 @@
                 <version>${shiro.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-quartz</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+
+
+            <!-- 依赖日志 -->
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>1.2</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.slf4j</groupId>
@@ -84,7 +102,7 @@
             </dependency>
 
 
-
+            <!-- Servlet 相关-->
             <dependency>
                 <groupId>javax.servlet</groupId>
                 <artifactId>javax.servlet-api</artifactId>
@@ -105,12 +123,7 @@
                 <version>1.2</version>
             </dependency>
 
-            <dependency>
-                <groupId>commons-logging</groupId>
-                <artifactId>commons-logging</artifactId>
-                <version>1.2</version>
-            </dependency>
-
+            <!-- 数据库相关-->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid</artifactId>
@@ -123,6 +136,7 @@
                 <version>5.1.34</version>
             </dependency>
 
+             <!-- Spring 相关-->
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
@@ -140,6 +154,20 @@
                 <artifactId>spring-webmvc</artifactId>
                 <version>${spring.version}</version>
             </dependency>
+
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
 
         </dependencies>
 
