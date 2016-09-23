@@ -1,4 +1,4 @@
-package com.panlingxiao.shiro.authorizer.permission;
+package authorizer.permission;
 
 import com.alibaba.druid.util.StringUtils;
 import org.apache.shiro.authz.Permission;

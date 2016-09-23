@@ -1,4 +1,4 @@
-package com.panlingxiao.shiro.authorizer;
+package com.panlingxiao.shiro.test;
 
 import junit.framework.Assert;
 import org.apache.shiro.authz.UnauthorizedException;

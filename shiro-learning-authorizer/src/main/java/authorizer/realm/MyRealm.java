@@ -1,6 +1,6 @@
-package com.panlingxiao.shiro.authorizer.realm;
+package authorizer.realm;
 
-import com.panlingxiao.shiro.authorizer.permission.BitPermission;
+import authorizer.permission.BitPermission;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;

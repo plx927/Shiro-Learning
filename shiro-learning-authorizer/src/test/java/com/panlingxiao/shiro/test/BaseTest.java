@@ -1,4 +1,4 @@
-package com.panlingxiao.shiro.authorizer;
+package com.panlingxiao.shiro.test;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;

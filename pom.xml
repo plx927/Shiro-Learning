@@ -20,6 +20,8 @@
         <module>shiro-learning-example</module>
         <module>shiro-learning-cache</module>
         <module>shiro-learning-session-manage</module>
+        <module>shiro-learning-cryptography</module>
+        <module>shiro-learning-example2</module>
     </modules>
 
     <properties>
@@ -165,6 +167,12 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context-support</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
                 <version>${spring.version}</version>
             </dependency>
 
