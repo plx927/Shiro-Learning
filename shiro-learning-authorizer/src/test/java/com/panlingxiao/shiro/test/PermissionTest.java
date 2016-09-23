@@ -149,6 +149,25 @@ public class PermissionTest extends BaseTest {
 
 
 
+    @Test
+    public void testPermission23(){
+        /*
+         *
+         *  /admin/user/list--> admin:*
+         *  admin:user:list
+         */
+        WildcardPermission wildcardPermission = new WildcardPermission("admin:*");
+        boolean result = wildcardPermission.implies(new WildcardPermission("admin:user:list"));
+        org.junit.Assert.assertTrue(result);
+    }
+
+
+    @Test
+    public void testURLPermission(){
+        WildcardPermission wildcardPermission = new WildcardPermission("/admin/**");
+        org.junit.Assert.assertFalse(wildcardPermission.implies(new WildcardPermission("/admin/user/list")));
+        System.out.println("/admin/**".substring(1).replaceAll("/",":"));
+    }
 
 
 

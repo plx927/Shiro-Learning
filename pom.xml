@@ -19,9 +19,9 @@
         <module>shiro-learning-integrated-spring</module>
         <module>shiro-learning-example</module>
         <module>shiro-learning-cache</module>
-        <module>shiro-learning-session-manage</module>
         <module>shiro-learning-cryptography</module>
         <module>shiro-learning-example2</module>
+        <module>shiro-learning-session-manage</module>
     </modules>
 
     <properties>
@@ -39,6 +39,13 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>4.12</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.version}</version>
                 <scope>test</scope>
             </dependency>
 
@@ -173,6 +180,18 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-orm</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aspects</artifactId>
                 <version>${spring.version}</version>
             </dependency>
 

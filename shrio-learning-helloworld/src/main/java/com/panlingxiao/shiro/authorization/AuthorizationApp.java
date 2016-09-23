@@ -14,6 +14,7 @@ import java.util.Arrays;
 
 /**
  * Created by panlingxiao on 2016/9/13.
+ * 测试自定义授权
  */
 public class AuthorizationApp {
 
