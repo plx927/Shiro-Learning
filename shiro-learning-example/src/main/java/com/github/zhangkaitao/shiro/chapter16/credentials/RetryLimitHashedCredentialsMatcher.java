@@ -10,9 +10,7 @@ import org.apache.shiro.cache.CacheManager;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * <p>User: Zhang Kaitao
- * <p>Date: 14-1-28
- * <p>Version: 1.0
+ *  自定义凭证匹配器，设置只能进行5次尝试的认证操作
  */
 public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher {
 

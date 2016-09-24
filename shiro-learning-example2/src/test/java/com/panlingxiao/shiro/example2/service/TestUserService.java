@@ -41,17 +41,19 @@ public class TestUserService {
 
 	@Test
 	public void testAdd() {
-		User u1 = new User();
-		u1.setUsername("lisi");
-		u1.setNickname("李四");
-		u1.setPassword("123");
-		userService.add(u1);
 
 		User u2 = new User();
 		u2.setUsername("admin");
 		u2.setNickname("管理员");
 		u2.setPassword("123");
 		userService.add(u2);
+
+
+		User u1 = new User();
+		u1.setUsername("lisi");
+		u1.setNickname("李四");
+		u1.setPassword("123");
+		userService.add(u1);
 
 		User u3 = new User();
 		u3.setUsername("zs");

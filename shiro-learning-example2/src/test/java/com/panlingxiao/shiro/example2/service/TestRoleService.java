@@ -46,7 +46,6 @@ public class TestRoleService {
 		r2.setName("研发组");
 		roleService.add(r2);
 
-
 		Role r = new Role();
 		r.setName("测试组");
 		roleService.add(r);

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -39,8 +40,9 @@
 					&nbsp;
 				</td>
 				<td>
-					<a href="update/${user.id }" class="list_op">更新</a>
-				&nbsp;
+					<shiro:hasPermission name="user:update:${user.id}">
+						<a href="update/${user.id }" class="list_op">更新</a>
+					</shiro:hasPermission>
 					<a href="listRes/${user.id }" class="list_op">查询管理资源</a>
 				</td>
 			</tr>

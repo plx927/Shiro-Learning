@@ -51,6 +51,18 @@ public class BitPermission implements Permission {
 
     }
 
+    public String getResourceIdentify() {
+        return resourceIdentify;
+    }
+
+    public int getPermissionBit() {
+        return permissionBit;
+    }
+
+    public String getInstanceId() {
+        return instanceId;
+    }
+
     @Override
     public boolean implies(Permission p) {
         if(!(p instanceof BitPermission)) {

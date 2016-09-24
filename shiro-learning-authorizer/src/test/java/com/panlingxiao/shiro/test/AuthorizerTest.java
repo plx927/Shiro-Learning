@@ -3,11 +3,7 @@ package com.panlingxiao.shiro.test;
 import junit.framework.Assert;
 import org.junit.Test;
 
-/**
- * <p>User: Zhang Kaitao
- * <p>Date: 14-1-26
- * <p>Version: 1.0
- */
+
 public class AuthorizerTest extends BaseTest {
 
     @Test

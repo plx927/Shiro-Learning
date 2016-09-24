@@ -10,38 +10,43 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
-/**
- * <p>User: Zhang Kaitao
- * <p>Date: 14-1-28
- * <p>Version: 1.0
- */
+
 public class UserRealm extends AuthorizingRealm {
 
     @Autowired
     private UserService userService;
 
+
+    /**
+     * 用户授权
+     *
+     * @param principals
+     * @return
+     */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        String username = (String)principals.getPrimaryPrincipal();
-
+        String username = (String) principals.getPrimaryPrincipal();
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         authorizationInfo.setRoles(userService.findRoles(username));
         authorizationInfo.setStringPermissions(userService.findPermissions(username));
         return authorizationInfo;
     }
 
+    /**
+     * 用户认证
+     * @param token
+     * @return
+     * @throws AuthenticationException
+     */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-
-        String username = (String)token.getPrincipal();
-
+        String username = (String) token.getPrincipal();
         User user = userService.findByUsername(username);
-
-        if(user == null) {
+        if (user == null) {
             throw new UnknownAccountException();//没找到帐号
         }
 
-        if(Boolean.TRUE.equals(user.getLocked())) {
+        if (Boolean.TRUE.equals(user.getLocked())) {
             throw new LockedAccountException(); //帐号锁定
         }
 
