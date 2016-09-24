@@ -73,4 +73,6 @@ public interface RoleDao extends BaseDao<Role>{
 	 * @return
 	 */
 	public RoleResource loadResourceRole(int roleId, int resId);
+
+	void deleteRoleResourceByRoleId(Integer id);
 }

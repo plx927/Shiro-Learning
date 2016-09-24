@@ -46,8 +46,7 @@
     </bean>
 
     <!-- 控制器异常处理 -->
-    <bean id="exceptionHandlerExceptionResolver" class="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver">
-    </bean>
+    <bean id="exceptionHandlerExceptionResolver" class="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver"/>
 
     <bean class="com.github.zhangkaitao.shiro.chapter16.web.exception.DefaultExceptionHandler"/>
 

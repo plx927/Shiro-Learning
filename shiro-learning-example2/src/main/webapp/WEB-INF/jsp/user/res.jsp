@@ -8,9 +8,7 @@
 </head>
 <body>
 <div id="content">
-	<h3 class="admin_link_bar">
-		<jsp:include page="inc.jsp"></jsp:include>
-	</h3>
+	<%@include file="/WEB-INF/jsp/common.jsp"%>
 	${user.username }---${user.nickname}
 	<input type="hidden" id="roleId" value="${role.id }"/>
 	<table width="800" cellspacing="0" cellPadding="0" id="listTable" border="1">

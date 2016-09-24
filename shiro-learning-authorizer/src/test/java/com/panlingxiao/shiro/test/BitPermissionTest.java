@@ -46,7 +46,12 @@ public class BitPermissionTest {
         Assert.assertEquals(0,bitPermission.getPermissionBit());
         Assert.assertEquals("*", bitPermission.getInstanceId());
 
+    }
 
+    @Test
+    public void testBitPermissionImpl(){
+        BitPermission bitPermission = new BitPermission("+user+10");
+        Assert.assertEquals(true,bitPermission.implies(new BitPermission("+user+2")));
 
     }
 }

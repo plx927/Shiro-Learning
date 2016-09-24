@@ -46,4 +46,8 @@ public interface RoleService {
 	public void deleteRoleResource(int roleId, int resId);
 	
 	public RoleResource loadResourceRole(int roleId, int resId);
+
+	void add(Role role, List<Integer> resIds);
+
+	void update(Role tr, List<Integer> resIds);
 }

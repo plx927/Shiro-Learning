@@ -87,4 +87,10 @@ public class RoleDaoImpl extends AbstractBaseDao<Role> implements RoleDao {
         String hql = "select rr from RoleResource rr where rr.roleId=? and rr.resId=?";
         return (RoleResource) getSession().createQuery(hql).setParameter(0, roleId).setParameter(1, resId).uniqueResult();
     }
+
+    @Override
+    public void deleteRoleResourceByRoleId(Integer roleId) {
+        String hql = "delete from RoleResource rr where rr.roleId=?";
+        getSession().createQuery(hql).setParameter(0,roleId).executeUpdate();
+    }
 }

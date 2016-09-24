@@ -20,8 +20,14 @@ public class RoleServiceImpl implements RoleService {
         roleDao.add(role);
     }
 
+    /**
+     * 删除角色
+     * @param id
+     */
     public void delete(int id) {
         roleDao.delete(id);
+        //同时删除角色对应的资源关系
+        roleDao.deleteRoleResourceByRoleId(id);
     }
 
     public Role load(int id) {
@@ -71,6 +77,28 @@ public class RoleServiceImpl implements RoleService {
 
     public RoleResource loadResourceRole(int roleId, int resId) {
         return roleDao.loadResourceRole(roleId, resId);
+    }
+
+    @Override
+    public void add(Role role, List<Integer> resIds) {
+        roleDao.add(role);
+        if(resIds != null){
+            for(Integer resId : resIds){
+                roleDao.addRoleResource(role.getId(),resId);
+            }
+        }
+
+    }
+
+    @Override
+    public void update(Role tr, List<Integer> resIds) {
+        roleDao.update(tr);
+        roleDao.deleteRoleResourceByRoleId(tr.getId());
+        if(resIds != null) {
+            for (Integer resId : resIds) {
+                roleDao.addRoleResource(tr.getId(), resId);
+            }
+        }
     }
 
 }

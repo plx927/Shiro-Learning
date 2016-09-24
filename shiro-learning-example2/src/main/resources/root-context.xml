@@ -12,4 +12,5 @@
     <bean class="com.panlingxiao.shiro.example2.util.SpringUtil"/>
 
     <import resource="dao.xml"/>
+    <import resource="spring-shiro.xml"/>
 </beans>

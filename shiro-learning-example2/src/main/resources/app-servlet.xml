@@ -16,9 +16,8 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	<!--
 	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
-	-->
+
 
 	<!--
 	<bean class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" id="validator">

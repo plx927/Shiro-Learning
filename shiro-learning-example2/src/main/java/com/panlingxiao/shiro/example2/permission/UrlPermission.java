@@ -4,6 +4,9 @@ import org.apache.shiro.authz.Permission;
 import org.apache.shiro.util.AntPathMatcher;
 import org.apache.shiro.util.PatternMatcher;
 
+/**
+ * 自定义的Permission，基于URL来判断是否具有操作权限
+ */
 public class UrlPermission implements Permission {
 	private String url;
 	
@@ -16,6 +19,7 @@ public class UrlPermission implements Permission {
 	}
 
 	public UrlPermission() {
+
 	}
 	
 	public UrlPermission(String url) {
@@ -28,7 +32,6 @@ public class UrlPermission implements Permission {
 		UrlPermission up = (UrlPermission)p;
 		// /admin/role/**
 		PatternMatcher patternMatcher = new AntPathMatcher();
-		//System.out.println(this.getUrl()+","+up.getUrl()+","+patternMatcher.matches(this.getUrl(), up.getUrl()));
 		return patternMatcher.matches(this.getUrl(), up.getUrl());
 	}
 

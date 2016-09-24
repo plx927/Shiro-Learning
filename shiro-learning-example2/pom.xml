@@ -38,6 +38,11 @@
             <artifactId>shiro-web</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+        </dependency>
+
         <!-- Spring 配置-->
         <dependency>
             <groupId>org.springframework</groupId>

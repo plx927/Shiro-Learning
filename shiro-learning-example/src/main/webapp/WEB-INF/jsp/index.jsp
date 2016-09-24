@@ -20,7 +20,7 @@
     获取源码：<a href="https://github.com/zhangkaitao/shiro-example" target="_blank">https://github.com/zhangkaitao/shiro-example</a>
 </div>
 
-
+<!--显示所有菜单-->
 <div class="ui-layout-west">
     功能菜单<br/>
     <c:forEach items="${menus}" var="m">

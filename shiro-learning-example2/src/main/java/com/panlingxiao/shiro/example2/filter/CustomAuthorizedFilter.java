@@ -1,7 +1,5 @@
 package com.panlingxiao.shiro.example2.filter;
 
-import com.panlingxiao.shiro.example2.service.PermissionUrlMappingsService;
-import com.panlingxiao.shiro.example2.util.SpringUtil;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.PathMatchingFilter;
@@ -12,11 +10,11 @@ import org.slf4j.LoggerFactory;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.Arrays;
 
 /**
  * Created by panlingxiao on 2016/9/23.
+ * 自定义认证过滤器,根据用户请求的URL
  */
 public class CustomAuthorizedFilter extends PathMatchingFilter {
 
@@ -33,20 +31,8 @@ public class CustomAuthorizedFilter extends PathMatchingFilter {
         if(log.isDebugEnabled()) {
             log.debug("请求的URI:{}", requestURI);
         }
-        //通过requestURI请求对应的权限字符串
-        PermissionUrlMappingsService permissionUrlMappingsService = SpringUtil.getBean("permissionUrlMappingsService");
-        String permission = permissionUrlMappingsService.getResourceByUrl(requestURI);
-        if(permission == null) {
-            return super.onPreHandle(request, response, mappedValue);
-        }else{
-            Subject subject = SecurityUtils.getSubject();
-            if(subject.isPermitted(permission)){
-                return true;
-            }else{
-                HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-                httpServletResponse.sendRedirect(httpRequest.getServletContext().getContextPath()+"/unauthorized.jsp");
-                return false;
-            }
-        }
+        Subject subject = SecurityUtils.getSubject();
+        return subject.isPermitted(requestURI);
     }
+
 }

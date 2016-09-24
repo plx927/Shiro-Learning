@@ -74,6 +74,7 @@ public class BitPermission implements Permission {
             return false;
         }
 
+        //通过位运算判断用户是否具有对应的操作权限
         if(!(this.permissionBit ==0 || (this.permissionBit & other.permissionBit) != 0)) {
             return false;
         }

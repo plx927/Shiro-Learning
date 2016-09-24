@@ -9,9 +9,10 @@
 </head>
 <body>
 <div id="content">
-	<h3 class="admin_link_bar">
-		<jsp:include page="inc.jsp"></jsp:include>
-	</h3>
+	<shiro:hasPermission name="/admin/user/add">
+		<a href="<%=request.getContextPath() %>/admin/user/add" class="admin_link">添加用户</a>
+	</shiro:hasPermission>
+
 	<table width="800" cellspacing="0" cellPadding="0" id="listTable" border="1">
 		<thead>
 		<tr>
@@ -26,24 +27,27 @@
 		<c:forEach items="${users }" var="user">
 			<tr>
 				<td>${user.id }</td>
-				<td><a href="${user.id }" class="list_link">${user.username }</a></td>
+				<td>${user.username }</td>
 				<td>${user.nickname }&nbsp;</td>
 				<td>
-					<c:if test="${user.status eq 0 }">
-						<span class="emp">停用</span>
-						<a href="updateStatus/${user.id }" class="list_op">启用</a>
-					</c:if>
 					<c:if test="${user.status eq 1 }">
+						<span class="emp">停用</span>
+						<shiro:hasPermission name="/admin/user/updateStauts/${user.id}">
+							<a href="updateStatus/${user.id }" class="list_op">启用</a>
+						</shiro:hasPermission>
+					</c:if>
+					<c:if test="${user.status eq 0 }">
 						<span>启用</span>
-						<a href="updateStatus/${user.id }" class="list_op">停用</a>
+						<shiro:hasPermission name="/admin/user/updateStatus/${user.id}">
+							<a href="updateStatus/${user.id }" class="list_op">停用</a>
+						</shiro:hasPermission>
 					</c:if>
 					&nbsp;
 				</td>
 				<td>
-					<shiro:hasPermission name="user:update:${user.id}">
+					<shiro:hasPermission name="/admin/user/update/${user.id}">
 						<a href="update/${user.id }" class="list_op">更新</a>
 					</shiro:hasPermission>
-					<a href="listRes/${user.id }" class="list_op">查询管理资源</a>
 				</td>
 			</tr>
 		</c:forEach>
