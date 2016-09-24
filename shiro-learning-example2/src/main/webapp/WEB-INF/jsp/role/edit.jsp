@@ -24,11 +24,7 @@
 		<tr>
 			<td>权限:</td>
 			<td >
-				<form:select path="resIds" items="${resources}" itemLabel="name" itemValue="id" >
-					<c:forEach var="resId" items="${hasResIds}">
-						<form:option value="${resId}"/>
-					</c:forEach>
-				</form:select>
+				<form:checkboxes path="resIds" items="${resources}" itemLabel="name" itemValue="id"/>
 			</td>
 		</tr>
 

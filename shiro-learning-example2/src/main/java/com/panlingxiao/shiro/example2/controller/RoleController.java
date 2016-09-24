@@ -68,11 +68,11 @@ public class RoleController {
 
 		//查询该角色所具备的资源
 		List<Resource> hasRes = roleService.listRoleResource(id);
-		List<Integer> hasResIds = new ArrayList<>();
+		List<Integer> resourceIds = new ArrayList<>();
 		for(Resource resource : hasRes){
-			hasResIds.add(resource.getId());
+			resourceIds.add(resource.getId());
 		}
-		model.addAttribute("hasResIds",hasResIds);
+		roleRequest.setResIds(resourceIds);
 		model.addAttribute("btnText","更新角色");
 		return "role/edit";
 	}

@@ -38,11 +38,7 @@
 		<tr>
 			<td class="rightTd">角色:</td>
 			<td>
-				<form:select path="roleIds" items="${roles}" itemLabel="name" itemValue="id">
-					<c:forEach items="${user.roleIds}" var="roleId">
-						<form:option value="${roleId}"/>
-					</c:forEach>
-				</form:select>
+				<form:checkboxes path="roleIds" items="${roles}" itemLabel="name" itemValue="id"/>
 			</td>
 
 		</tr>
