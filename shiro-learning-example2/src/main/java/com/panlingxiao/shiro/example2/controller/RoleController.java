@@ -21,88 +21,91 @@ import java.util.List;
 @Controller
 @RequestMapping("/admin/role")
 public class RoleController {
-	
-	@Autowired
-	private RoleService roleService;
-	@Autowired
-	private ResourceService resourceService;
-	
-	@RequestMapping("/list")
-	public String list(Model model) {
-		model.addAttribute("roles", roleService.list());
-		return "role/list";
-	}
-	
-	@RequestMapping(value="/add",method=RequestMethod.GET)
-	public String add(Model model) {
-		model.addAttribute("role", new RoleRequest());
-		//查询所有资源
-		List<Resource> resources = resourceService.listResource();
-		model.addAttribute("resources",resources);
-		model.addAttribute("btnText", "添加角色");
-		return "role/edit";
-	}
 
-	/**
-	 * 添加角色
-	 * @param role
-	 * @param resIds
-	 * @return
-	 */
-	@RequestMapping(value="/add",method=RequestMethod.POST)
-	public String add(Role role,@RequestParam(name = "resIds",required = false)List<Integer> resIds) {
-		roleService.add(role, resIds);
-		return "redirect:/admin/role/list";
-	}
+    @Autowired
+    private RoleService roleService;
+    @Autowired
+    private ResourceService resourceService;
+
+    @RequestMapping("/list")
+    public String list(Model model) {
+        model.addAttribute("roles", roleService.list());
+        return "role/list";
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String add(Model model) {
+        model.addAttribute("role", new RoleRequest());
+        //查询所有资源
+        List<Resource> resources = resourceService.listResource();
+        model.addAttribute("resources", resources);
+        model.addAttribute("btnText", "添加角色");
+        return "role/edit";
+    }
+
+    /**
+     * 添加角色
+     *
+     * @param role
+     * @param resIds
+     * @return
+     */
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String add(Role role, @RequestParam(value = "resIds", required = false) List<Integer> resIds) {
+        roleService.add(role, resIds);
+        return "redirect:/admin/role/list";
+    }
 
 
-	@RequestMapping(value="/update/{id}",method=RequestMethod.GET)
-	public String update(Model model,@PathVariable int id) throws InvocationTargetException, IllegalAccessException {
-		Role role = roleService.load(id);
-		RoleRequest roleRequest = new RoleRequest();
-		BeanUtils.copyProperties(roleRequest,role);
-		model.addAttribute("role", roleRequest);
-		//查询所有资源
-		List<Resource> resources = resourceService.listResource();
-		model.addAttribute("resources",resources);
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+    public String update(Model model, @PathVariable int id) throws InvocationTargetException, IllegalAccessException {
+        Role role = roleService.load(id);
+        RoleRequest roleRequest = new RoleRequest();
+        BeanUtils.copyProperties(roleRequest, role);
+        model.addAttribute("role", roleRequest);
+        //查询所有资源
+        List<Resource> resources = resourceService.listResource();
+        model.addAttribute("resources", resources);
 
-		//查询该角色所具备的资源
-		List<Resource> hasRes = roleService.listRoleResource(id);
-		List<Integer> resourceIds = new ArrayList<>();
-		for(Resource resource : hasRes){
-			resourceIds.add(resource.getId());
-		}
-		roleRequest.setResIds(resourceIds);
-		model.addAttribute("btnText","更新角色");
-		return "role/edit";
-	}
+        //查询该角色所具备的资源
+        List<Resource> hasRes = roleService.listRoleResource(id);
+        List<Integer> resourceIds = new ArrayList<>();
+        for (Resource resource : hasRes) {
+            resourceIds.add(resource.getId());
+        }
+        roleRequest.setResIds(resourceIds);
+        model.addAttribute("btnText", "更新角色");
+        return "role/edit";
+    }
 
-	/**
-	 * 更新角色
-	 * @param id
-	 * @param role
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping(value="/update/{id}",method=RequestMethod.POST)
-	public String add(@PathVariable int id,Role role,@RequestParam(name = "resIds",required = false)List<Integer> resIds,Model model) {
-		Role tr = roleService.load(id);
-		tr.setName(role.getName());
-		tr.setDescription(role.getDescription());
-		roleService.update(tr, resIds);
-		return "redirect:/admin/role/list";
-	}
+    /**
+     * 更新角色
+     *
+     * @param id
+     * @param role
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    public String add(@PathVariable int id, Role role, @RequestParam(value = "resIds", required = false) List<Integer> resIds, Model model) {
+        Role tr = roleService.load(id);
+        tr.setName(role.getName());
+        tr.setDescription(role.getDescription());
+        roleService.update(tr, resIds);
+        return "redirect:/admin/role/list";
+    }
 
-	/**
-	 * 删除角色
-	 * @param id
-	 * @return
-	 */
-	@RequestMapping("/delete/{id}")
-	public String delete(@PathVariable("id") int id){
-		roleService.delete(id);
-		return "redirect:/admin/role/list";
-	}
+    /**
+     * 删除角色
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/delete/{id}")
+    public String delete(@PathVariable("id") int id) {
+        roleService.delete(id);
+        return "redirect:/admin/role/list";
+    }
 
 
 //	/**
@@ -145,5 +148,4 @@ public class RoleController {
 //	}
 
 
-	
 }
