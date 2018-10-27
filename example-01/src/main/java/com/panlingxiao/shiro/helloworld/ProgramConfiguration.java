@@ -1,7 +1,7 @@
-package com.panlingxiao.shiro.configuration.program;
+package com.panlingxiao.shiro.helloworld;
 
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.mgt.*;
+import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.realm.Realm;
 
 import java.util.ArrayList;

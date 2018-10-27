@@ -14,28 +14,28 @@
         By default, this listener automatically knows to look for our WEB-INF/shiro.ini file for Shiro configuration.
         源码分析加载过程
     -->
-    <listener>
-        <listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
-    </listener>
+    <!--<listener>-->
+        <!--<listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>-->
+    <!--</listener>-->
 
 
     <!-- The <filter> declaration defines the master ShiroFilter.
          This filter is expected to filter all requests into the web application so
          Shiro can peform necessary identity and access control operations before allowing a request to reach the application.
       -->
-    <filter>
-        <filter-name>ShiroFilter</filter-name>
-        <filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>
-    </filter>
+    <!--<filter>-->
+        <!--<filter-name>ShiroFilter</filter-name>-->
+        <!--<filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>-->
+    <!--</filter>-->
 
-    <filter-mapping>
-        <filter-name>ShiroFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-        <dispatcher>INCLUDE</dispatcher>
-        <dispatcher>ERROR</dispatcher>
-    </filter-mapping>
+    <!--<filter-mapping>-->
+        <!--<filter-name>ShiroFilter</filter-name>-->
+        <!--<url-pattern>/*</url-pattern>-->
+        <!--<dispatcher>REQUEST</dispatcher>-->
+        <!--<dispatcher>FORWARD</dispatcher>-->
+        <!--<dispatcher>INCLUDE</dispatcher>-->
+        <!--<dispatcher>ERROR</dispatcher>-->
+    <!--</filter-mapping>-->
 
 
 

@@ -10,7 +10,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>shiro-learning-session-manage</artifactId>
+    <artifactId>shrio-learning-helloworld</artifactId>
 
     <dependencies>
 
@@ -35,10 +35,18 @@
         </dependency>
 
         <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-ehcache</artifactId>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
     </dependencies>
+
+
+
 
 </project>

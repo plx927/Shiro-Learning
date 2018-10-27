@@ -7,13 +7,19 @@
         <groupId>com.panlingxiao.shiro</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>shrio-learning-helloworld</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>shiro-learning-authenticator</artifactId>
+
 
     <dependencies>
+
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+
 
         <dependency>
             <groupId>commons-logging</groupId>
@@ -37,21 +43,7 @@
 
 
 
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-
-
-
     </dependencies>
-
-
 
 
 </project>
