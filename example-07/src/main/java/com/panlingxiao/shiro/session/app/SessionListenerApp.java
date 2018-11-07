@@ -20,7 +20,7 @@ public class SessionListenerApp {
 
         Subject subject = SecurityUtils.getSubject();
 
-        UsernamePasswordToken token = new UsernamePasswordToken("admin","123");
+        UsernamePasswordToken token = new UsernamePasswordToken("admin", "123");
         subject.login(token);
 
         subject.logout();

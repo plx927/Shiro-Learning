@@ -42,7 +42,7 @@ public class AuthenticationApp {
                  */
                 subject.login(token);
                 log.info("认证成功");
-                log.info("user's principal is :{},RealmNames is:{}",subject.getPrincipals(),subject.getPrincipals().getRealmNames());
+                log.info("user's principal is :{},RealmNames is:{}", subject.getPrincipals(), subject.getPrincipals().getRealmNames());
             } catch (AuthenticationException e) {
                 log.info("认证失败!");
             }

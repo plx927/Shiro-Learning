@@ -100,7 +100,7 @@ public class LoginLogoutTest {
         try {
             //4、登录，即身份验证
             subject.login(token);
-            System.out.println("principal's "+subject.getPrincipals());
+            System.out.println("principal's " + subject.getPrincipals());
         } catch (AuthenticationException e) {
             //5、身份验证失败
             e.printStackTrace();

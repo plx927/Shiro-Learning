@@ -12,7 +12,7 @@ import org.junit.Test;
 public class PermissionTest extends BaseTest {
 
     /**
-     *   测试单个资源单个权限
+     * 测试单个资源单个权限
      */
     @Test
     public void testIsPermitted() {
@@ -42,7 +42,7 @@ public class PermissionTest extends BaseTest {
      * 测试单个资源多个操作
      */
     @Test
-    public void testPermission(){
+    public void testPermission() {
         //以chen这个用户登入，他具有system:user:update,system:user:delete
         login("classpath:shiro-permission.ini", "chen", "123");
         org.junit.Assert.assertTrue(subject().isPermitted("system:user:update"));
@@ -51,9 +51,9 @@ public class PermissionTest extends BaseTest {
     }
 
     @Test
-    public void testPermission2(){
+    public void testPermission2() {
         //以li这个用户登入，他具有system:user:update,delete
-        login("classpath:shiro-permission.ini","qian","123");
+        login("classpath:shiro-permission.ini", "qian", "123");
         org.junit.Assert.assertTrue(subject().isPermitted("system:user:update"));
         org.junit.Assert.assertTrue(subject().isPermitted("system:user:delete"));
         org.junit.Assert.assertTrue(subject().isPermittedAll("system:user:update", "system:user:delete"));
@@ -61,7 +61,7 @@ public class PermissionTest extends BaseTest {
 
 
     @Test
-    public void testPermission3(){
+    public void testPermission3() {
         //具有*:view,具有user:view,product:view,但不具备user:system:view权限
         login("classpath:shiro-permission.ini", "chen", "123");
         org.junit.Assert.assertTrue(subject().isPermitted("user:view"));
@@ -71,13 +71,12 @@ public class PermissionTest extends BaseTest {
 
 
     @Test
-    public void testPermission4(){
+    public void testPermission4() {
         //具有*:*:view,具备user:system:view权限
         login("classpath:shiro-permission.ini", "qian", "123");
         org.junit.Assert.assertTrue(subject().isPermitted("user:system:view"));
         org.junit.Assert.assertFalse(subject().isPermitted("user:view"));
     }
-
 
 
     /**
@@ -145,12 +144,8 @@ public class PermissionTest extends BaseTest {
     }
 
 
-
-
-
-
     @Test
-    public void testPermission23(){
+    public void testPermission23() {
         /*
          *
          *  /admin/user/list--> admin:*
@@ -163,22 +158,11 @@ public class PermissionTest extends BaseTest {
 
 
     @Test
-    public void testURLPermission(){
+    public void testURLPermission() {
         WildcardPermission wildcardPermission = new WildcardPermission("/admin/**");
         org.junit.Assert.assertFalse(wildcardPermission.implies(new WildcardPermission("/admin/user/list")));
-        System.out.println("/admin/**".substring(1).replaceAll("/",":"));
+        System.out.println("/admin/**".substring(1).replaceAll("/", ":"));
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

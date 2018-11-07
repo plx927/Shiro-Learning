@@ -97,7 +97,6 @@ public class HelloWorld {
             currentUser.logout();
 
 
-
             System.exit(0);
         }
     }

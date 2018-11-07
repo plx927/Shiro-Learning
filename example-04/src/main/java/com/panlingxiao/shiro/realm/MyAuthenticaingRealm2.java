@@ -14,7 +14,7 @@ import org.apache.shiro.util.ByteSource;
 /**
  * Created by panlingxiao on 2016/9/23.
  */
-public class MyAuthenticaingRealm2 extends AuthenticatingRealm{
+public class MyAuthenticaingRealm2 extends AuthenticatingRealm {
 
 
     @Override
@@ -22,11 +22,11 @@ public class MyAuthenticaingRealm2 extends AuthenticatingRealm{
         Object principal = token.getPrincipal();
         DefaultPasswordService passwordService = new DefaultPasswordService();
 
-        if("hello".equals(principal)){
+        if ("hello".equals(principal)) {
             //将凭证进行加密,模拟从数据库中取出的数据
             String credential = passwordService.encryptPassword(token.getCredentials());
             //后面会自动通过PasswordMatcher来做凭证的校验
-            SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(principal,credential,getName());
+            SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(principal, credential, getName());
             return simpleAuthenticationInfo;
         }
         throw new AuthenticationException("用户名或者密码错误");

@@ -53,6 +53,5 @@ public class WildcardPermissionTest {
         System.out.println(new WildcardPermission("printer:print:*").implies(wildcardPermissionResolver.resolvePermission("printer:print:lp7200")));
 
 
-
     }
 }

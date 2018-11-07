@@ -8,16 +8,12 @@ import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.junit.Test;
 
-/**
- * <p>User: Zhang Kaitao
- * <p>Date: 14-1-28
- * <p>Version: 1.0
- */
+
 public class UserRealmTest extends BaseTest {
-    
+
 
     @Test
-      public void testLoginSuccess() {
+    public void testLoginSuccess() {
         login("classpath:shiro.ini", u1.getUsername(), password);
         Assert.assertTrue(subject().isAuthenticated());
     }
@@ -39,7 +35,7 @@ public class UserRealmTest extends BaseTest {
 
     @Test(expected = ExcessiveAttemptsException.class)
     public void testLoginFailWithLimitRetryCount() {
-        for(int i = 1; i <= 5; i++) {
+        for (int i = 1; i <= 5; i++) {
             try {
                 login("classpath:shiro.ini", u3.getUsername(), password + "1");
             } catch (Exception e) {/*ignore*/}
@@ -52,7 +48,7 @@ public class UserRealmTest extends BaseTest {
 
     @Test
     public void testHasRole() {
-        login("classpath:shiro.ini", u1.getUsername(), password );
+        login("classpath:shiro.ini", u1.getUsername(), password);
         Assert.assertTrue(subject().hasRole("admin"));
     }
 

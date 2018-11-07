@@ -25,6 +25,7 @@ public class AuthenticatorTest {
 
     /**
      * 通用的工具类
+     *
      * @param configFile
      */
     private void login(String configFile) {
@@ -113,7 +114,6 @@ public class AuthenticatorTest {
         PrincipalCollection principalCollection = subject.getPrincipals();
         Assert.assertEquals(1, principalCollection.asList().size());
     }
-
 
 
     @After

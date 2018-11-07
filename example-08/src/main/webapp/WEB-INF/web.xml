@@ -15,7 +15,7 @@
         源码分析加载过程
     -->
     <!--<listener>-->
-        <!--<listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>-->
+    <!--<listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>-->
     <!--</listener>-->
 
 
@@ -24,19 +24,18 @@
          Shiro can peform necessary identity and access control operations before allowing a request to reach the application.
       -->
     <!--<filter>-->
-        <!--<filter-name>ShiroFilter</filter-name>-->
-        <!--<filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>-->
+    <!--<filter-name>ShiroFilter</filter-name>-->
+    <!--<filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>-->
     <!--</filter>-->
 
     <!--<filter-mapping>-->
-        <!--<filter-name>ShiroFilter</filter-name>-->
-        <!--<url-pattern>/*</url-pattern>-->
-        <!--<dispatcher>REQUEST</dispatcher>-->
-        <!--<dispatcher>FORWARD</dispatcher>-->
-        <!--<dispatcher>INCLUDE</dispatcher>-->
-        <!--<dispatcher>ERROR</dispatcher>-->
+    <!--<filter-name>ShiroFilter</filter-name>-->
+    <!--<url-pattern>/*</url-pattern>-->
+    <!--<dispatcher>REQUEST</dispatcher>-->
+    <!--<dispatcher>FORWARD</dispatcher>-->
+    <!--<dispatcher>INCLUDE</dispatcher>-->
+    <!--<dispatcher>ERROR</dispatcher>-->
     <!--</filter-mapping>-->
-
 
 
 </web-app>

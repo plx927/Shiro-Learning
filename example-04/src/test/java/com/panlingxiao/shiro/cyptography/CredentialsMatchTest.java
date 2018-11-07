@@ -26,7 +26,7 @@ public class CredentialsMatchTest {
         SecurityUtils.setSecurityManager(securityManager);
 
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken("hello","1234");
+        UsernamePasswordToken token = new UsernamePasswordToken("hello", "1234");
 
         subject.login(token);
     }
@@ -42,30 +42,30 @@ public class CredentialsMatchTest {
         SecurityUtils.setSecurityManager(securityManager);
 
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken("hello","123");
+        UsernamePasswordToken token = new UsernamePasswordToken("hello", "123");
         subject.login(token);
     }
 
 
     @Test
-    public void testHashCredentialMatcherBySalt(){
+    public void testHashCredentialMatcherBySalt() {
         Factory<org.apache.shiro.mgt.SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro-hash-salt-credential.ini");
         SecurityManager securityManager = factory.getInstance();
         SecurityUtils.setSecurityManager(securityManager);
 
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken("hello","123");
+        UsernamePasswordToken token = new UsernamePasswordToken("hello", "123");
         subject.login(token);
     }
 
 
     @Test
-    public void testPasswordMatcher(){
+    public void testPasswordMatcher() {
         Factory<org.apache.shiro.mgt.SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro-password-credential.ini");
         SecurityManager securityManager = factory.getInstance();
         SecurityUtils.setSecurityManager(securityManager);
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken("hello","123");
+        UsernamePasswordToken token = new UsernamePasswordToken("hello", "123");
         subject.login(token);
     }
 

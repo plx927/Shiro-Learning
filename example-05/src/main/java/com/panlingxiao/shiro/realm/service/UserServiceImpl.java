@@ -16,6 +16,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 创建用户
+     *
      * @param user
      */
     public User createUser(User user) {
@@ -26,11 +27,12 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 修改密码
+     *
      * @param userId
      * @param newPassword
      */
     public void changePassword(Long userId, String newPassword) {
-        User user =userDao.findOne(userId);
+        User user = userDao.findOne(userId);
         user.setPassword(newPassword);
         passwordHelper.encryptPassword(user);
         userDao.updateUser(user);
@@ -38,6 +40,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 添加用户-角色关系
+     *
      * @param userId
      * @param roleIds
      */
@@ -48,6 +51,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 移除用户-角色关系
+     *
      * @param userId
      * @param roleIds
      */
@@ -57,6 +61,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 根据用户名查找用户
+     *
      * @param username
      * @return
      */
@@ -66,6 +71,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 根据用户名查找其角色
+     *
      * @param username
      * @return
      */
@@ -75,6 +81,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 根据用户名查找其权限
+     *
      * @param username
      * @return
      */

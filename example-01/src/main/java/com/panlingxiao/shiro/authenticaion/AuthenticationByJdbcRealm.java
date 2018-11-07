@@ -26,8 +26,8 @@ public class AuthenticationByJdbcRealm {
 
         Subject currentUser = SecurityUtils.getSubject();
 
-        if(!currentUser.isAuthenticated()){
-            UsernamePasswordToken token = new UsernamePasswordToken("admin","123");
+        if (!currentUser.isAuthenticated()) {
+            UsernamePasswordToken token = new UsernamePasswordToken("admin", "123");
             currentUser.login(token);
             log.info("登入成功");
         }

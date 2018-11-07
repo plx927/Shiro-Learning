@@ -29,46 +29,46 @@ public class AuthorizationApp {
 
         Subject subject = SecurityUtils.getSubject();
 
-        if(!subject.isAuthenticated()){
-            UsernamePasswordToken token = new UsernamePasswordToken("hello","123");
+        if (!subject.isAuthenticated()) {
+            UsernamePasswordToken token = new UsernamePasswordToken("hello", "123");
             subject.login(token);
-            log.info("认证成功,principalCollection is {}",subject.getPrincipals());
+            log.info("认证成功,principalCollection is {}", subject.getPrincipals());
         }
 
         //判断用户的角色
-        if(subject.hasRole("user")){
+        if (subject.hasRole("user")) {
             log.info("授权成功，subject has user role");
         }
 
-        if(subject.hasRole("admin")){
+        if (subject.hasRole("admin")) {
             log.info("授权成功，subject has admin role");
         }
 
-        if(!subject.hasRole("visitor")){
+        if (!subject.hasRole("visitor")) {
             log.info("授权失败，subject has not visitor role");
         }
 
         //判断权限
-        if(subject.isPermitted("user:add")){
+        if (subject.isPermitted("user:add")) {
             log.info("授权成功,subject has permit user:add");
         }
 
-        if(subject.isPermitted(new WildcardPermission("user:get"))){
+        if (subject.isPermitted(new WildcardPermission("user:get"))) {
             log.info("授权成功,subject has permit user:get");
         }
 
         //domain:action --> user:update,user:delete
-        if(subject.isPermitted("user:update,delete")){
+        if (subject.isPermitted("user:update,delete")) {
             log.info("授权成功,subject has permit user:update,delete");
         }
 
         WildcardPermissionResolver resolver = new WildcardPermissionResolver();
 
-        if(subject.isPermittedAll(Arrays.asList(resolver.resolvePermission("user:update"),resolver.resolvePermission("user:delete")))){
+        if (subject.isPermittedAll(Arrays.asList(resolver.resolvePermission("user:update"), resolver.resolvePermission("user:delete")))) {
             log.info("批量测试授权");
         }
 
-        if(!subject.isPermitted(new WildcardPermission("admin:get"))){
+        if (!subject.isPermitted(new WildcardPermission("admin:get"))) {
             log.info("授权失败,subject has not permit admin:get");
         }
 

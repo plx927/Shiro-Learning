@@ -33,10 +33,10 @@ public class MyAuthenticatedRealm extends AuthenticatingRealm {
             //获取用户的身份
             String principal = (String) usernamePasswordToken.getPrincipal();
             String credential = new String((char[]) usernamePasswordToken.getCredentials());
-            if (credential != null && credential.equals(USER_INFO.get(principal))) {
+            if (credential.equals(USER_INFO.get(principal))) {
                 SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(principal + "@163.com", credential, getName());
                 //获取到当前Realm所产生的Principal
-                System.out.println("available principal is : "+getAvailablePrincipal(authenticationInfo.getPrincipals()));
+                System.out.println("available principal is : " + getAvailablePrincipal(authenticationInfo.getPrincipals()));
                 return authenticationInfo;
             }
         }
