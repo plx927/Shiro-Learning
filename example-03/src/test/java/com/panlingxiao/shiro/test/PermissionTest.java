@@ -1,6 +1,7 @@
 package com.panlingxiao.shiro.test;
 
 import junit.framework.Assert;
+import org.apache.shiro.authz.Permission;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.authz.permission.WildcardPermission;
 import org.junit.Test;
@@ -162,6 +163,20 @@ public class PermissionTest extends BaseTest {
         WildcardPermission wildcardPermission = new WildcardPermission("/admin/**");
         org.junit.Assert.assertFalse(wildcardPermission.implies(new WildcardPermission("/admin/user/list")));
         System.out.println("/admin/**".substring(1).replaceAll("/", ":"));
+    }
+
+
+    @Test
+    public void permissionImply(){
+        Permission permission1 = new WildcardPermission("user:delete,update");
+        Permission permission2 = new WildcardPermission("user:delete");
+        org.junit.Assert.assertTrue(permission1.implies(permission2));
+        org.junit.Assert.assertFalse(permission2.implies(permission1));
+
+        Permission permission3 = new WildcardPermission("user:*");
+        Permission permission4 = new WildcardPermission("user:create,update,delete,view");
+        org.junit.Assert.assertTrue(permission3.implies(permission4));
+        org.junit.Assert.assertFalse(permission4.implies(permission3));
     }
 
 
